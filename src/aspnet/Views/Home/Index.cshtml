@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<div>
+    <ul>
+        @foreach (var jsonFile in ViewBag.JsonFiles)
+        {
+            <li>
+                <details>
+                    <summary>@jsonFile.Name</summary>
+                    <pre class="prettyprint"><code>@jsonFile.Content</code></pre>
+                </details>
+            </li>
+        }
+    </ul>
+</div>

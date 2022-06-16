@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+  id 'com.microsoft.azure.azurewebapp' version '1.2.0'
+}
+
+azurewebapp {
+    subscription = 'dcf66641-6312-4ee1-b296-723bb0a999ba'
+    resourceGroup = 'rg-aspnet-adls-ussc-dev'
+    appName = 'wa-java-aspnetadls-ussc-dev'
+    pricingTier = 'S1'
+    region = 'southcentralus'
+    runtime {
+      os = 'Linux'
+      webContainer = 'Tomcat 9.0' // or 'Java SE' if you want to run an executable jar
+      javaVersion = 'Java 11'
+    }
+    appSettings {
+    }
+    auth {
+        type = 'azure_cli' // support azure_cli, oauth2, device_code and service_principal
+    }
+}
+
+group = 'com.microsoft.azure'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'com.azure:azure-storage-file-datalake:12.10.1'
+  implementation 'com.azure:azure-identity:1.5.2'
+  implementation 'javax.servlet:jstl:1.2'
+  implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.44'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+  providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.44'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
