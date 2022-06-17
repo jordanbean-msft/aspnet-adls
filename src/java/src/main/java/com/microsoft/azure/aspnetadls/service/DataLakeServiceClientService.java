@@ -1,7 +1,5 @@
 package com.microsoft.azure.aspnetadls.service;
 
-import java.util.Vector;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,7 +5,6 @@ param managedIdentityName string
 param logAnalyticsWorkspaceName string
 param appInsightsName string
 param keyVaultName string
-param storageAccountConnectionStringSecretName string
 param storageAccountName string
 param storageAccountAccessKeySecretName string
 param blobContainerName string
@@ -81,13 +80,6 @@ resource appServiceJava 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'BlobContainerName'
           value: blobContainerName
-        }
-      ]
-      connectionStrings: [
-        {
-          name: 'StorageAccountConnectionString'
-          connectionString: '@Microsoft.KeyVault(VaultName=${keyVaultName};SecretName=${storageAccountConnectionStringSecretName})'
-          type: 'Custom'
         }
       ]
     }

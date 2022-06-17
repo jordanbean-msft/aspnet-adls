@@ -52,7 +52,6 @@ module keyVaultDeployment 'key-vault.bicep' = {
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
     storageAccountName: storageDeployment.outputs.storageAccountName
-    storageAccountConnectionStringSecretName: names.outputs.storageAccountConnectionStringSecretName
     storageAccountAccessKeySecretName: names.outputs.storageAccountAccessKeySecretName
   }
 }
@@ -75,7 +74,6 @@ module appServiceNetCoreDeployment 'app-service-net-core.bicep' = {
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
     keyVaultName: keyVaultDeployment.outputs.keyVaultName
-    storageAccountConnectionStringSecretName: keyVaultDeployment.outputs.storageAccountConnectionStringSecretName
     storageAccountName: storageDeployment.outputs.storageAccountName
     storageAccountAccessKeySecretName: keyVaultDeployment.outputs.storageAccountAccessKeySecretName
     blobContainerName: storageDeployment.outputs.blobContainerName
@@ -93,7 +91,6 @@ module appServiceJavaDeployment 'app-service-java.bicep' = {
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
     keyVaultName: keyVaultDeployment.outputs.keyVaultName
-    storageAccountConnectionStringSecretName: keyVaultDeployment.outputs.storageAccountConnectionStringSecretName
     blobContainerName: storageDeployment.outputs.blobContainerName
     shouldEnableManagedIdentity: shouldEnableManagedIdentity
     storageAccountAccessKeySecretName: keyVaultDeployment.outputs.storageAccountAccessKeySecretName

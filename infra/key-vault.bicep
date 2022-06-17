@@ -3,7 +3,6 @@ param location string
 param managedIdentityName string
 param logAnalyticsWorkspaceName string
 param storageAccountName string
-param storageAccountConnectionStringSecretName string
 param storageAccountAccessKeySecretName string
 
 resource managedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' existing = {
@@ -36,12 +35,6 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
         tenantId: managedIdentity.properties.tenantId
       }
     ]
-  }
-  resource storageAccountConnectionStringSecret 'secrets@2021-10-01' = {
-    name: storageAccountConnectionStringSecretName
-    properties: {
-      value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${storageAccount.listKeys().keys[0].value};EndpointSuffix=core.windows.net'
-    }
   }
   resource storageAccountAccessKeySecret 'secrets@2021-10-01' = {
     name: storageAccountAccessKeySecretName
@@ -80,5 +73,4 @@ resource diagnosticSettings 'Microsoft.Insights/diagnosticsettings@2017-05-01-pr
 }
 
 output keyVaultName string = keyVault.name
-output storageAccountConnectionStringSecretName string = storageAccountConnectionStringSecretName
 output storageAccountAccessKeySecretName string = storageAccountAccessKeySecretName
