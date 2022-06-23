@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <title>Json Files</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <div>
+    <ul>
+      <c:forEach items="${jsonFiles}" var="jsonFile">
+        <li th:each="jsonFile: ${jsonFiles}">
+          <details>
+            <summary th:text="${jsonFile.getName()}" />
+            <pre class="prettyprint"><code th:text="${jsonFile.getContent()}" /></pre>
+          </details>
+        </li>
+      </c:forEach>
+    </ul>
+  </div>
+</body>
+
+</html>
