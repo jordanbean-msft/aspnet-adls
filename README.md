@@ -4,6 +4,10 @@ This repo shows you how to build an ASP.NET Core & Java Spring application and a
 
 ![architecture](.img/architecture.png)
 
+Here is a screenshot of the Java application accessing the ADLS & display the JSON contents of the files.
+
+![java-app](.img/java-app.png)
+
 ## Accessing Storage Account using Storage Account Access Keys
 
 In this example, the Storage Account Access Keys are stored in Azure Key Vault and accessed as environment variables in the App Service the application is running as.
@@ -290,3 +294,11 @@ dataLakeServiceClient = builder.credential(defaultAzureCredential).endpoint(endp
     ```shell
     gradle azureWebAppDeploy
     ```
+
+## Links
+
+- [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview)
+- [Azure Data Lake Storage Client Library](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-client-libraries)
+- [Azure Data Lake Storage Client Library for Java](https://docs.microsoft.com/en-us/java/api/overview/azure/storage-file-datalake-readme?view=azure-java-stable)
+- [Azure Data Lake Storage Client Library for C#](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-data-operations-net-sdk)
+- [Java SDK Managed Identity Authentication](https://docs.microsoft.com/en-us/azure/developer/java/sdk/identity-azure-hosted-auth)
